@@ -1,7 +1,9 @@
 # OpenBuudai
 OpenBuudai - Open Source Oscilloscope Software based on OpenHantek
 
-OpenBuudai is based on OpenHantek by Oliver Haag.
+OpenBuudai is initially based on OpenHantek by Oliver Haag.
+
+https://github.com/OpenHantek/openhantek
 
 Current support:
 - SainSmart DDS120
