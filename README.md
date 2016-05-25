@@ -6,7 +6,12 @@ OpenBuudai is based on OpenHantek by Oliver Haag.
 Current support:
 - SainSmart DDS120
 - SainSmart DDS140 (untested)
-- Buudai BM102
+- Buudai/Rocktech BM102
+
+##Hardware, Teardown & Discussion
+
+http://www.360customs.de/en/2014/10/usb-oszilloskop-sainsmart-dds120-2-kanal-20mhz-50msps-buudairocktech-bm102/
+http://www.eevblog.com/forum/testgear/sainsmart-dds120-usb-oscilloscope-%28buudai-bm102%29/
 
 ##Build
 
