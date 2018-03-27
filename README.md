@@ -10,14 +10,14 @@ Current support:
 - SainSmart DDS140 (untested)
 - Buudai/Rocktech BM102
 
-##Hardware, Teardown & Discussion
+## Hardware, Teardown & Discussion
 
 http://www.360customs.de/en/2014/10/usb-oszilloskop-sainsmart-dds120-2-kanal-20mhz-50msps-buudairocktech-bm102/
 http://www.eevblog.com/forum/testgear/sainsmart-dds120-usb-oscilloscope-%28buudai-bm102%29/
 
-##Build
+## Build
 
-###Windows
+### Windows
 
 You want this version of Qt and MinGW:
 http://sourceforge.net/projects/qtx64/files/qt-x86/5.3.2/mingw-4.9/dwarf/qt-5.3.2-x86-mingw491r1-dw2-opengl.exe/download
@@ -38,7 +38,7 @@ Screenshots of path setup is shown here:
 
 http://www.eevblog.com/forum/testgear/sainsmart-dds120-usb-oscilloscope-%28buudai-bm102%29/msg548786/#msg548786
 
-###Linux
+### Linux
 
 To build OpenHantek from source, you need Qt 4 and FFTW 3. Under Debian or Ubuntu you can just install the packages libqt4-dev and libfftw3-dev. I don't know the package names for other distributions but they may be similar.
 
@@ -83,6 +83,6 @@ gpasswd -a YOUR_USER_NAME uucp
 ^D
 ```
 
-###OSX
+### OSX
 
 ToDo
