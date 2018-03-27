@@ -61,7 +61,7 @@ $ make
 $ make install
 ```
 
-####Troubleshooting
+#### Troubleshooting
 When status bar of the application shows "Couldn't open device XXX:YYY: Access denied (insufficient permission)":
 
 * A cheap and dirty hack is to run the following every time the device is plugged in, replacing XXX and YYY values to match those 
