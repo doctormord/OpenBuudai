@@ -61,6 +61,27 @@ $ make
 $ make install
 ```
 
+####Troubleshooting
+When status bar of the application shows "Couldn't open device XXX:YYY: Access denied (insufficient permission)":
+
+* A cheap and dirty hack is to run the following every time the device is plugged in, replacing XXX and YYY values to match those 
+included in the error message:
+```bash
+sudo chmod 666  /dev/bus/usb/XXX/YYY
+```
+* A better option is to configure UDEV rules. Config has to be specific for your system, but is generally done as:
+```bash
+sudo -s
+echo 'SUBSYSTEM=="usb", ATTR{idProduct}=="8102", ATTRS{idVendor}=="8102", MODE="0666"' > /etc/udev/rules.d/99-OpenBuudai.rules
+^D
+```
+On Arch Linux, the same can be accomplished by adding permissions for the UUCP group:
+```bash
+sudo -s
+echo 'SUBSYSTEM=="usb", ATTR{idProduct}=="8102", ATTRS{idVendor}=="8102", GROUP="uucp"' > /etc/udev/rules.d/99-OpenBuudai.rules
+gpasswd -a YOUR_USER_NAME uucp
+^D
+```
 
 ###OSX
 
