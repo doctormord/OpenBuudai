@@ -40,7 +40,27 @@ http://www.eevblog.com/forum/testgear/sainsmart-dds120-usb-oscilloscope-%28buuda
 
 ###Linux
 
-ToDo
+To build OpenHantek from source, you need Qt 4 and FFTW 3. Under Debian or Ubuntu you can just install the packages libqt4-dev and libfftw3-dev. I don't know the package names for other distributions but they may be similar.
+
+Edit Source/OpenHantek.pro to enable the following lines while disabling comparable lines above
+```
+INCLUDEPATH += C:/Qt/lib/libusb/include/ # Find .h files
+# LIBS += -LC:/Qt/lib/libusb/MS32/dll/ -llibusb-1.0 # Find .lib files
+LIBS +=  -lusb-1.0 # Find .lib files Linux Build
+
+INCLUDEPATH += C:/Qt/lib/fftw-3.3.4-dll32 # Find .h files
+# LIBS += -LC:/Qt/lib/fftw-3.3.4-dll32/ -lfftw3-3 # Find .lib files
+LIBS += -lfftw3 # Find .lib files Linux Build
+```
+
+After you've installed the requirements run the following commands inside the Source directory:
+
+```bash
+$ qmake PREFIX=/usr
+$ make
+$ make install
+```
+
 
 ###OSX
 

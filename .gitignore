@@ -45,3 +45,11 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+
+# Linux
+.o
+/Source/build
+/Source/release
+/Source/bin
+Makefile*
+.qmake.stash
