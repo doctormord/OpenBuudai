@@ -10,14 +10,14 @@ Current support:
 - SainSmart DDS140 (untested)
 - Buudai/Rocktech BM102
 
-##Hardware, Teardown & Discussion
+## Hardware, Teardown & Discussion
 
 http://www.360customs.de/en/2014/10/usb-oszilloskop-sainsmart-dds120-2-kanal-20mhz-50msps-buudairocktech-bm102/
 http://www.eevblog.com/forum/testgear/sainsmart-dds120-usb-oscilloscope-%28buudai-bm102%29/
 
-##Build
+## Build
 
-###Windows
+### Windows
 
 You want this version of Qt and MinGW:
 http://sourceforge.net/projects/qtx64/files/qt-x86/5.3.2/mingw-4.9/dwarf/qt-5.3.2-x86-mingw491r1-dw2-opengl.exe/download
@@ -38,10 +38,51 @@ Screenshots of path setup is shown here:
 
 http://www.eevblog.com/forum/testgear/sainsmart-dds120-usb-oscilloscope-%28buudai-bm102%29/msg548786/#msg548786
 
-###Linux
+### Linux
 
-ToDo
+To build OpenHantek from source, you need Qt 4 and FFTW 3. Under Debian or Ubuntu you can just install the packages libqt4-dev and libfftw3-dev. I don't know the package names for other distributions but they may be similar.
 
-###OSX
+Edit Source/OpenHantek.pro to enable the following lines while disabling comparable lines above
+```
+INCLUDEPATH += C:/Qt/lib/libusb/include/ # Find .h files
+# LIBS += -LC:/Qt/lib/libusb/MS32/dll/ -llibusb-1.0 # Find .lib files
+LIBS +=  -lusb-1.0 # Find .lib files Linux Build
+
+INCLUDEPATH += C:/Qt/lib/fftw-3.3.4-dll32 # Find .h files
+# LIBS += -LC:/Qt/lib/fftw-3.3.4-dll32/ -lfftw3-3 # Find .lib files
+LIBS += -lfftw3 # Find .lib files Linux Build
+```
+
+After you've installed the requirements run the following commands inside the Source directory:
+
+```bash
+$ qmake PREFIX=/usr
+$ make
+$ make install
+```
+
+#### Troubleshooting
+When status bar of the application shows "Couldn't open device XXX:YYY: Access denied (insufficient permission)":
+
+* A cheap and dirty hack is to run the following every time the device is plugged in, replacing XXX and YYY values to match those 
+included in the error message:
+```bash
+sudo chmod 666  /dev/bus/usb/XXX/YYY
+```
+* A better option is to configure UDEV rules. Config has to be specific for your system, but is generally done as:
+```bash
+sudo -s
+echo 'SUBSYSTEM=="usb", ATTR{idProduct}=="8102", ATTRS{idVendor}=="8102", MODE="0666"' > /etc/udev/rules.d/99-OpenBuudai.rules
+^D
+```
+On Arch Linux, the same can be accomplished by adding permissions for the UUCP group:
+```bash
+sudo -s
+echo 'SUBSYSTEM=="usb", ATTR{idProduct}=="8102", ATTRS{idVendor}=="8102", GROUP="uucp"' > /etc/udev/rules.d/99-OpenBuudai.rules
+gpasswd -a YOUR_USER_NAME uucp
+^D
+```
+
+### OSX
 
 ToDo
